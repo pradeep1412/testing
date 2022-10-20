@@ -332,4 +332,14 @@ router.post("/statuspatient"
     res.status(500).json({statusPatient:[error.message]})
   }
 })
+
+router.get("/statusdetails",async (req,res)=>{
+  try {
+    const statusPatient = await StatusPatient.find({})
+    res.json({statusPatient})
+  } catch (error) {
+    console.log(error.message)
+    res.status(500).json({statusPatient:[error.message]})
+  }
+})
 export default router
