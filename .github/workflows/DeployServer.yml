@@ -22,4 +22,4 @@ jobs:
       - name: add heroku remote
         run: git remote add heroku https://heroku:eb902efb-1160-49ae-b73f-2cf788777fb4@git.heroku.com/emr-1-api.git
       - name: push to heroku remote
-        run: git push heroku master
+        run: git push heroku master --force
