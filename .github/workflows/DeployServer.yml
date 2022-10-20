@@ -5,8 +5,8 @@ on:
     branches:
     - master
     paths:
-    - 'src/*',
-    - '.github/workflows/DeployServer.yml'
+    - "src/*"
+    - ".github/workflows/DeployServer.yml"
 
 jobs:
   deploys:
