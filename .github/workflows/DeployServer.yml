@@ -21,5 +21,7 @@ jobs:
         run: git config --global user.email 'ppradeepkumar1412@gmail.com'
       - name: add heroku remote
         run: git remote add heroku https://heroku:eb902efb-1160-49ae-b73f-2cf788777fb4@git.heroku.com/emr-1-api.git
+      - name: Fetch repo
+        run: git fetch --unshallow
       - name: push to heroku remote
         run: git push heroku master --force
