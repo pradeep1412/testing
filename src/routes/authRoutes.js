@@ -103,7 +103,7 @@ router.post("/login",async (req,res)=>{
 */
 
 router.post("/patient_signup",
-body('firstName').isLength({min:5}),
+body('firstName').isLength({min:3}),
 body('email').isEmail(),
 body('password').isLength()
 ,async (req,res)=>{
