@@ -102,8 +102,7 @@ router.post("/login",async (req,res)=>{
   isProtected:true
 */
 
-router.post("/patient_signup",
-body('email').isEmail()
+router.post("/patient_signup"
 ,async (req,res)=>{
   const {errors} = validationResult(req)
   if(errors.length > 0 ) return res.status(403).json({errors,message:"Bad request"})
