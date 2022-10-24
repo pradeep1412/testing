@@ -9,7 +9,9 @@ dotenv.config()
 connectDB()
 
 const app = Express()
-app.use(cors())
+app.use(cors({
+  origin:"*"
+}))
 app.use(Express.json())
 
 app.use("/api/v1/auth",authRoutes)
