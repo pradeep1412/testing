@@ -117,10 +117,19 @@ body('password').isLength()
 
     const patient = new Patient({p_id,email,firstName,lastName,password:hashedpassword,address,gender,dob,age,phoneno})
     await patient.save()
-    res.send("request is send")
+    return res.json({
+      data:{patient,},
+      success:true,
+      message:"user saved successfully",
+    })
   } catch (error) {
     console.log(error.message)
     res.status(500).json({patient:[error.message]})
+    return res.json({
+      data:{patient:null},
+      success:false,
+      message:error.message,
+    })
   }
 })
 /*
