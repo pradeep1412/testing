@@ -3,6 +3,7 @@ import dotenv from "dotenv"
 import connectDB from "./services/mongodb/connectDB";
 import cors from "cors"
 import authRoutes from "./routes/authRoutes"
+import reportRoutes from "./routes/reportRoutes"
 
 dotenv.config()
 
@@ -15,6 +16,8 @@ app.use(cors({
 app.use(Express.json())
 
 app.use("/api/v1/auth",authRoutes)
+
+app.use("/api/v1/report",reportRoutes)
 
 const port = process.env.PORT || 3003
 
