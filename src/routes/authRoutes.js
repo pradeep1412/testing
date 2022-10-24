@@ -103,7 +103,7 @@ router.post("/login",async (req,res)=>{
 */
 
 router.post("/patient_signup",
-body('email').isEmail(),
+body('email').isEmail()
 ,async (req,res)=>{
   const {errors} = validationResult(req)
   if(errors.length > 0 ) return res.status(403).json({errors,message:"Bad request"})
