@@ -228,7 +228,9 @@ router.post("/appointment"
     const case_id = uuidv4()
     const appointment = new Appointment({case_id,p_id,time,d_id})
     await appointment.save()
-    res.send("request is send")
+    return res.json({data:{appointment,},
+      success:true,
+      message:"appointment made successfully",})
   } catch (error) {
     console.log(error.message)
     res.status(500).json({appointment:[error.message]})
@@ -247,10 +249,12 @@ router.post("/diagnosis",isDoctor
   const {errors} = validationResult(req)
   if(errors.length > 0 ) return res.status(403).json({errors,message:"Bad request"})
   try {
-    const {case_id,p_id,testRequired,diagnosiss_details} = req.body
-    const diagnosis = new Diagnosis({case_id,p_id,testRequired,diagnosiss_details})
+    const {case_id,p_id,testRequired} = req.body
+    const diagnosis = new Diagnosis({case_id,p_id,testRequired})
     await diagnosis.save()
-    res.send("request is send")
+    return res.json({data:{diagnosis,},
+      success:true,
+      message:"diagnosis add to case successfully",})
   } catch (error) {
     console.log(error.message)
     res.status(500).json({diagnosis:[error.message]})
@@ -270,9 +274,12 @@ router.post("/finaldiagnosis",isDoctor
   if(errors.length > 0 ) return res.status(403).json({errors,message:"Bad request"})
   try {
     const {case_id,diagnosiss_details} = req.body
-    const DiagnosisDetail = new DiagnosisDetails({case_id,diagnosiss_details})
-    await DiagnosisDetail.save()
-    res.send("request is send")
+    const diagnosisDetail = new DiagnosisDetails({case_id,diagnosiss_details})
+    await diagnosisDetail.save()
+    return res.json({data:{diagnosisDetail,},
+      success:true,
+      message:"the final report diagonal add to the database successfully",}
+    )
   } catch (error) {
     console.log(error.message)
     res.status(500).json({DiagnosisDetail:[error.message]})
@@ -293,7 +300,9 @@ router.post("/labtest",isLabTest
     const {case_id,test_details} = req.body
     const labtest = new Labtest({case_id,test_details})
     await labtest.save()
-    res.send("request is send")
+    return res.json({data:{labtest,},
+      success:true,
+      message:"labtest report add to the database successfully",})
   } catch (error) {
     console.log(error.message)
     res.status(500).json({labtest:[error.message]})
@@ -314,7 +323,9 @@ router.post("/medicines",isDoctor
     const {case_id,medicines_details} = req.body
     const medicines = new Medicines({case_id,medicines_details})
     await medicines.save()
-    res.send("request is send")
+    return res.json({data:{medicines,},
+      success:true,
+      message:"medicines add to the database successfully",})
   } catch (error) {
     console.log(error.message)
     res.status(500).json({medicines:[error.message]})
